@@ -1,0 +1,67 @@
+name: flutter-article
+
+dep:
+  ops:
+    type: git
+    url: "https://github.com/hatlonely/ops.git"
+    version: master
+
+env:
+  default:
+    NAME: "flutter-article"
+    IMAGE_REPOSITORY: "flutter-article"
+    IMAGE_TAG: "$(git describe --tags | awk '{print(substr($0,2,length($0)))}')"
+  dev:
+    K8S_CONTEXT: "home-k8s"
+    NAMESPACE: "dev"
+    REGISTRY_ENDPOINT: "{{.registry.aliyun.endpoint}}"
+    REGISTRY_USERNAME: "{{.registry.aliyun.username}}"
+    REGISTRY_PASSWORD: "{{.registry.aliyun.password}}"
+    REGISTRY_NAMESPACE: "{{.registry.aliyun.namespace}}"
+    PULL_SECRET_NAME: "hatlonely-pull-secret"
+    REPLICA_COUNT: 2
+    INGRESS_HOST: "k8s.article.hatlonely.com"
+    SECRET_NAME: "k8s-secret"
+
+task:
+  namespace:
+    step:
+      - test "${K8S_CONTEXT}" == "$(kubectl config current-context)" || exit 1
+      - kubectl get namespaces "${NAMESPACE}" 2>/dev/null 1>&2 || kubectl create namespace "${NAMESPACE}"
+  pull-secret:
+    step:
+      - test "${K8S_CONTEXT}" == "$(kubectl config current-context)" || exit 1
+      - |
+        kubectl get secret "${PULL_SECRET_NAME}" -n "${NAMESPACE}" 2>/dev/null 1>&2 || { \
+          kubectl create secret docker-registry ${PULL_SECRET_NAME} \
+            --docker-server=${REGISTRY_ENDPOINT} \
+            --docker-username=${REGISTRY_USERNAME} \
+            --docker-password=${REGISTRY_PASSWORD} \
+            --namespace=${NAMESPACE}
+        }
+  font:
+    step:
+      - wget https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansSC.zip
+  image:
+    step:
+      - docker build --tag="${REGISTRY_NAMESPACE}/${IMAGE_REPOSITORY}:${IMAGE_TAG}" .
+      - docker login --username="${REGISTRY_USERNAME}" --password="${REGISTRY_PASSWORD}" "${REGISTRY_ENDPOINT}"
+      - docker tag "${REGISTRY_NAMESPACE}/${IMAGE_REPOSITORY}:${IMAGE_TAG}" "${REGISTRY_ENDPOINT}/${REGISTRY_NAMESPACE}/${IMAGE_REPOSITORY}:${IMAGE_TAG}"
+      - docker push "${REGISTRY_ENDPOINT}/${REGISTRY_NAMESPACE}/${IMAGE_REPOSITORY}:${IMAGE_TAG}"
+  helm:
+    args:
+      cmd:
+        type: string
+        default: diff
+        validation: x in ["diff", "install", "upgrade", "delete"]
+    step:
+      - test "${K8S_CONTEXT}" == "$(kubectl config current-context)" || exit 1
+      - sh ${DEP}/ops/tool/render.sh ${DEP}/ops/helm/flutter-app ${TMP}/helm/${NAME}
+      - sh ${DEP}/ops/tool/render.sh ops/helm ${TMP}/helm
+      - |
+        case "${cmd}" in
+          "diff"|"") helm diff upgrade "${NAME}" -n "${NAMESPACE}" "${TMP}/helm/${NAME}" -f "${TMP}/helm/values-adapter.yaml" --allow-unreleased;;
+          "install") helm install "${NAME}" -n "${NAMESPACE}" "${TMP}/helm/${NAME}" -f "${TMP}/helm/values-adapter.yaml";;
+          "upgrade") helm upgrade "${NAME}" -n "${NAMESPACE}" "${TMP}/helm/${NAME}" -f "${TMP}/helm/values-adapter.yaml";;
+          "delete") helm delete "${NAME}" -n "${NAMESPACE}";;
+        esac
