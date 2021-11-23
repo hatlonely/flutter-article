@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_article/pages/article/list_article_page.dart';
 
 void main() {
@@ -24,9 +24,9 @@ class ArticleApp extends StatelessWidget {
         appBarElevation: 5,
       ).toTheme,
       themeMode: ThemeMode.system,
-      routes: {
-        '/tool/hash': (context) => ListArticlePage(),
-      },
+      // routes: {
+      //   '/': (context) => ListArticlePage(),
+      // },
       home: ListArticlePage(),
     );
   }
