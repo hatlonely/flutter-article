@@ -35,9 +35,9 @@ class _ListArticleState extends State<ListArticle> {
     return Card(
       elevation: 5,
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-      margin: EdgeInsets.fromLTRB(10, 50, 10, 20),
+      margin: const EdgeInsets.fromLTRB(10, 50, 10, 20),
       child: Padding(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: FutureBuilder<Response<Map>>(
             future: Dio().get('http://k8s.rpc.article.hatlonely.com/v1/articles'),
             builder: (BuildContext context, AsyncSnapshot<Response<Map>> snapshot) {
@@ -67,7 +67,7 @@ class _ListArticleState extends State<ListArticle> {
                           margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                           child: InkWell(
                             child: Center(
-                              child: Text((e as Map)["title"], style: TextStyle(color: Colors.white)),
+                              child: Text((e as Map)["title"], style: const TextStyle(color: Colors.white)),
                             ),
                             onTap: () => Navigator.pushNamed(context, ""),
                           ),
