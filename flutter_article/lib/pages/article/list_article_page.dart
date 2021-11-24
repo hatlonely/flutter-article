@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class ListArticlePage extends StatelessWidget {
+  const ListArticlePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +13,7 @@ class ListArticlePage extends StatelessWidget {
           child: SizedBox(
             width: 800,
             child: Column(
-              children: [ListArticle()],
+              children: const [ListArticle()],
             ),
           ),
         ),
@@ -21,6 +23,8 @@ class ListArticlePage extends StatelessWidget {
 }
 
 class ListArticle extends StatefulWidget {
+  const ListArticle({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _ListArticleState();
 }
@@ -43,9 +47,9 @@ class _ListArticleState extends State<ListArticle> {
                 elevation: 5,
                 color: Theme.of(context).colorScheme.primaryVariant,
                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                 child: InkWell(
-                  child: Center(
+                  child: const Center(
                     child: Text("+", style: TextStyle(color: Colors.white)),
                   ),
                   onTap: () => Navigator.pushNamed(context, "+"),
@@ -60,7 +64,7 @@ class _ListArticleState extends State<ListArticle> {
                           elevation: 5,
                           color: Theme.of(context).colorScheme.primaryVariant,
                           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                          margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                          margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                           child: InkWell(
                             child: Center(
                               child: Text((e as Map)["title"], style: TextStyle(color: Colors.white)),
@@ -80,7 +84,7 @@ class _ListArticleState extends State<ListArticle> {
                 mainAxisSpacing: 10,
                 shrinkWrap: true,
                 maxCrossAxisExtent: 200.0,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: cards.toList(),
               );
             }),
