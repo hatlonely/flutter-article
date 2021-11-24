@@ -1,6 +1,7 @@
 import 'package:articleapi/articleapi.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_article/pages/article/get_article_page.dart';
 
 class ListArticlePage extends StatelessWidget {
   final ArticleServiceApi client;
@@ -69,7 +70,7 @@ class ListArticleWidget extends StatelessWidget {
                         child: Center(
                           child: Text(e.title!, style: const TextStyle(color: Colors.white)),
                         ),
-                        onTap: () => Navigator.pushNamed(context, ""),
+                        onTap: () => Navigator.pushNamed(context, GetArticlePage.kRouteName, arguments: e.id),
                       ),
                     ))
                 .toList();
