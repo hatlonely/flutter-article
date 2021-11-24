@@ -24,6 +24,15 @@ env:
     SECRET_NAME: "k8s-secret"
 
 task:
+  api:
+    step:
+      - test -e ${TMP}/rpc-article || git clone --depth 1 --branch master https://github.com/hatlonely/rpc-article.git ${TMP}/rpc-article
+      - |
+        rm -rf "${PWD}/${TMP}/api/article"
+        docker run --rm -v "${PWD}/${TMP}/rpc-article/api/gen/swagger/api:/api" -v "${PWD}/${TMP}/api/article:/out" openapitools/openapi-generator-cli:v5.2.1 generate \
+          -i /api/article.swagger.json -g dart-dio-next -o /out/ --additional-properties=pubName=articleapi
+      - docker run --rm -v "${PWD}/${TMP}/api/article:/out" cirrusci/flutter:2.5.3 sh -c "cd /out && flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs"
+      - cp -r ${PWD}/${TMP}/api flutter_article/
   namespace:
     step:
       - test "${K8S_CONTEXT}" == "$(kubectl config current-context)" || exit 1

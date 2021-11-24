@@ -1,4 +1,4 @@
-FROM cirrusci/flutter:2.2.3 AS build
+FROM cirrusci/flutter:2.5.3 AS build
 
 COPY flutter_article /flutter/flutter_article
 WORKDIR /flutter/flutter_article

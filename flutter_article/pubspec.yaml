@@ -39,6 +39,8 @@ dependencies:
   flutter_markdown: ^0.6.6
   flex_color_scheme: ^3.0.1
   dio: ^4.0.0
+  articleapi:
+    path: api/article
 
 dev_dependencies:
   flutter_test:

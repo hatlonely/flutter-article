@@ -1,13 +1,18 @@
+import 'package:articleapi/articleapi.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_article/pages/article/list_article_page.dart';
 
 void main() {
-  runApp(const ArticleApp());
+  runApp(ArticleApp());
 }
 
 class ArticleApp extends StatelessWidget {
-  const ArticleApp({Key? key}) : super(key: key);
+  final client = Articleapi(
+    basePathOverride: 'http://k8s.rpc.article.hatlonely.com',
+  ).getArticleServiceApi();
+
+  ArticleApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class ArticleApp extends StatelessWidget {
       // routes: {
       //   '/': (context) => ListArticlePage(),
       // },
-      home: ListArticlePage(),
+      home: ListArticlePage(client: client),
     );
   }
 }
