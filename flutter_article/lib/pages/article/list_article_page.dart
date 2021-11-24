@@ -16,7 +16,7 @@ class ListArticlePage extends StatelessWidget {
           child: SizedBox(
             width: 800,
             child: Column(
-              children: [ListArticle(client: client)],
+              children: [ListArticleWidget(client: client)],
             ),
           ),
         ),
@@ -25,19 +25,10 @@ class ListArticlePage extends StatelessWidget {
   }
 }
 
-class ListArticle extends StatefulWidget {
+class ListArticleWidget extends StatelessWidget {
   final ArticleServiceApi client;
 
-  const ListArticle({Key? key, required this.client}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => _ListArticleState(client);
-}
-
-class _ListArticleState extends State<ListArticle> {
-  final ArticleServiceApi client;
-
-  _ListArticleState(this.client);
+  const ListArticleWidget({Key? key, required this.client}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
