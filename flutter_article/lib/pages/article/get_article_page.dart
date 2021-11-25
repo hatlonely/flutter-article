@@ -2,6 +2,7 @@ import 'package:articleapi/articleapi.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class GetArticlePage extends StatelessWidget {
   static const kRouteName = '/article/get';
@@ -23,7 +24,7 @@ class GetArticlePage extends StatelessWidget {
             child: Column(
               children: [
                 Card(
-                  elevation: 5,
+                  elevation: 0,
                   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                   margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: Padding(
@@ -57,6 +58,36 @@ class GetArticleWidget extends StatelessWidget {
         return MarkdownBody(
           selectable: true,
           data: snapshot.data!.data!.content!,
+          // styleSheetTheme: MarkdownStyleSheetBaseTheme.platform,
+          styleSheet: MarkdownStyleSheet(
+            a: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
+              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            ]),
+            h1: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
+              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            ]),
+            h2: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
+              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            ]),
+            h3: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
+              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            ]),
+            h4: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
+              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            ]),
+            h5: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
+              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            ]),
+            h6: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
+              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            ]),
+            p: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
+              GoogleFonts.notoSerif().fontFamily!,
+            ]),
+            code: TextStyle(
+              fontFamily: GoogleFonts.sourceCodePro().fontFamily,
+            ),
+          ),
         );
       }
       return const Text("光速加载中");

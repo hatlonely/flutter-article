@@ -37,7 +37,7 @@ dependencies:
 
   google_fonts: ^2.1.0
   flutter_markdown: ^0.6.6
-  flex_color_scheme: ^3.0.1
+  flex_color_scheme: ^4.1.1
   dio: ^4.0.0
   articleapi:
     path: api/article

@@ -21,7 +21,7 @@ class ArticleApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'hatlonely 的文章',
       theme: FlexColorScheme.light(
-        scheme: FlexScheme.bigStone,
+        scheme: FlexScheme.greyLaw,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         // fontFamily: GoogleFonts.robotoCondensed().fontFamily,
         // fontFamily: GoogleFonts.longCang().fontFamily,
