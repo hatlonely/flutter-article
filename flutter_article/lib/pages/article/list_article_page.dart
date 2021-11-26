@@ -34,7 +34,7 @@ class ListArticleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
+      elevation: 0,
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
       margin: const EdgeInsets.fromLTRB(10, 50, 10, 20),
       child: Padding(
@@ -44,25 +44,12 @@ class ListArticleWidget extends StatelessWidget {
         }(), builder: (BuildContext context, AsyncSnapshot<Response<ApiListArticleRes>> snapshot) {
           var cards = <Widget>[];
 
-          var addCard = Card(
-            elevation: 5,
-            color: Theme.of(context).colorScheme.primaryVariant,
-            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-            margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-            child: InkWell(
-              child: const Center(
-                child: Text("+", style: TextStyle(color: Colors.white)),
-              ),
-              onTap: () => Navigator.pushNamed(context, "+"),
-            ),
-          );
-
           if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else if (snapshot.hasData) {
             cards = snapshot.data!.data!.articles!
                 .map((e) => Card(
-                      elevation: 5,
+                      elevation: 0,
                       color: Theme.of(context).colorScheme.primaryVariant,
                       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                       margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
@@ -76,15 +63,13 @@ class ListArticleWidget extends StatelessWidget {
                 .toList();
           }
 
-          cards.add(addCard);
-
           return GridView.extent(
             primary: false,
             padding: const EdgeInsets.all(20),
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
             shrinkWrap: true,
-            maxCrossAxisExtent: 200.0,
+            maxCrossAxisExtent: 600.0,
             physics: const NeverScrollableScrollPhysics(),
             children: cards.toList(),
           );
