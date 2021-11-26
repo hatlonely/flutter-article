@@ -2,6 +2,8 @@ import 'package:articleapi/articleapi.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_article/pages/article/get_article_page.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class ListArticlePage extends StatelessWidget {
   final ArticleServiceApi client;
@@ -11,7 +13,18 @@ class ListArticlePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('文章列表')),
+      appBar: AppBar(
+        title: Text(
+          '文章列表',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+            fontFamilyFallback: [
+              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            ],
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Center(
           child: SizedBox(
@@ -54,8 +67,49 @@ class ListArticleWidget extends StatelessWidget {
                       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                       margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                       child: InkWell(
-                        child: Center(
-                          child: Text(e.title!, style: const TextStyle(color: Colors.white)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Text(
+                                e.title!,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                                  fontFamilyFallback: [
+                                    GoogleFonts.zcoolXiaoWei().fontFamily!,
+                                  ],
+                                ),
+                              ),
+                              const Divider(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    "hatlonely",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                                      fontFamilyFallback: [
+                                        GoogleFonts.zcoolXiaoWei().fontFamily!,
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    DateFormat.yMMMd().format(DateTime.fromMillisecondsSinceEpoch(e.createAt! * 1000)),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                                      fontFamilyFallback: [
+                                        GoogleFonts.zcoolXiaoWei().fontFamily!,
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                         onTap: () => Navigator.pushNamed(context, GetArticlePage.kRouteName, arguments: e.id),
                       ),
@@ -70,6 +124,7 @@ class ListArticleWidget extends StatelessWidget {
             mainAxisSpacing: 10,
             shrinkWrap: true,
             maxCrossAxisExtent: 600.0,
+            childAspectRatio: 3,
             physics: const NeverScrollableScrollPhysics(),
             children: cards.toList(),
           );

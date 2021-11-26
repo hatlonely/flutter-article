@@ -16,7 +16,18 @@ class GetArticlePage extends StatelessWidget {
     final articleID = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('文章详情')),
+      appBar: AppBar(
+        title: Text(
+          '文章详情',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+            fontFamilyFallback: [
+              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            ],
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Center(
           child: SizedBox(
@@ -90,7 +101,15 @@ class GetArticleWidget extends StatelessWidget {
           ),
         );
       }
-      return const Text("光速加载中");
+      return Text(
+        "光速加载中...",
+        style: TextStyle(
+          fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+          fontFamilyFallback: [
+            GoogleFonts.zcoolXiaoWei().fontFamily!,
+          ],
+        ),
+      );
     });
   }
 }
