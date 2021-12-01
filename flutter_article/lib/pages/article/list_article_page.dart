@@ -74,54 +74,62 @@ class ListArticleWidget extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      Card(
-                        elevation: 0,
-                        margin: const EdgeInsets.all(0),
-                        child: InkWell(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  e.title!,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: 22,
-                                    fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-                                    fontFamilyFallback: [
-                                      GoogleFonts.zcoolXiaoWei().fontFamily!,
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Card(
+                              elevation: 0,
+                              margin: const EdgeInsets.all(0),
+                              child: InkWell(
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        e.title!,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 22,
+                                          fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                                          fontFamilyFallback: [
+                                            GoogleFonts.zcoolXiaoWei().fontFamily!,
+                                          ],
+                                        ),
+                                      ),
+                                      const Divider(),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text(
+                                            "hatlonely",
+                                            style: TextStyle(
+                                              fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                                              fontFamilyFallback: [
+                                                GoogleFonts.zcoolXiaoWei().fontFamily!,
+                                              ],
+                                            ),
+                                          ),
+                                          Text(
+                                            DateFormat.yMMMd()
+                                                .format(DateTime.fromMillisecondsSinceEpoch(e.createAt! * 1000)),
+                                            style: TextStyle(
+                                              fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                                              fontFamilyFallback: [
+                                                GoogleFonts.zcoolXiaoWei().fontFamily!,
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ],
                                   ),
                                 ),
-                                const Divider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      "hatlonely",
-                                      style: TextStyle(
-                                        fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-                                        fontFamilyFallback: [
-                                          GoogleFonts.zcoolXiaoWei().fontFamily!,
-                                        ],
-                                      ),
-                                    ),
-                                    Text(
-                                      DateFormat.yMMMd()
-                                          .format(DateTime.fromMillisecondsSinceEpoch(e.createAt! * 1000)),
-                                      style: TextStyle(
-                                        fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-                                        fontFamilyFallback: [
-                                          GoogleFonts.zcoolXiaoWei().fontFamily!,
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                onTap: () => Navigator.pushNamed(context, GetArticlePage.kRouteName, arguments: e.id),
+                              ),
                             ),
-                          ),
-                          onTap: () => Navigator.pushNamed(context, GetArticlePage.kRouteName, arguments: e.id),
+                          ],
                         ),
                       )
                     ])))
