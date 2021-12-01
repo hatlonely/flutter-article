@@ -62,58 +62,69 @@ class ListArticleWidget extends StatelessWidget {
           } else if (snapshot.hasData) {
             cards = snapshot.data!.data!.articles!
                 .map((e) => Card(
-                      elevation: 0,
-                      color: Theme.of(context).colorScheme.primaryVariant,
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                      margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                      child: InkWell(
-                        child: Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Text(
-                                e.title!,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 22,
-                                  fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-                                  fontFamilyFallback: [
-                                    GoogleFonts.zcoolXiaoWei().fontFamily!,
+                    elevation: 1,
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                    margin: const EdgeInsets.all(0),
+                    child: Column(children: [
+                      const SizedBox(
+                        width: double.infinity,
+                        height: 200,
+                        child: Image(
+                          image: NetworkImage('http://k8s.minio.hatlonely.com/article/IMG_2684.png'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Card(
+                        elevation: 0,
+                        margin: const EdgeInsets.all(0),
+                        child: InkWell(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  e.title!,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: 22,
+                                    fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                                    fontFamilyFallback: [
+                                      GoogleFonts.zcoolXiaoWei().fontFamily!,
+                                    ],
+                                  ),
+                                ),
+                                const Divider(),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      "hatlonely",
+                                      style: TextStyle(
+                                        fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                                        fontFamilyFallback: [
+                                          GoogleFonts.zcoolXiaoWei().fontFamily!,
+                                        ],
+                                      ),
+                                    ),
+                                    Text(
+                                      DateFormat.yMMMd()
+                                          .format(DateTime.fromMillisecondsSinceEpoch(e.createAt! * 1000)),
+                                      style: TextStyle(
+                                        fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                                        fontFamilyFallback: [
+                                          GoogleFonts.zcoolXiaoWei().fontFamily!,
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
-                              ),
-                              const Divider(),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    "hatlonely",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-                                      fontFamilyFallback: [
-                                        GoogleFonts.zcoolXiaoWei().fontFamily!,
-                                      ],
-                                    ),
-                                  ),
-                                  Text(
-                                    DateFormat.yMMMd().format(DateTime.fromMillisecondsSinceEpoch(e.createAt! * 1000)),
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-                                      fontFamilyFallback: [
-                                        GoogleFonts.zcoolXiaoWei().fontFamily!,
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
+                          onTap: () => Navigator.pushNamed(context, GetArticlePage.kRouteName, arguments: e.id),
                         ),
-                        onTap: () => Navigator.pushNamed(context, GetArticlePage.kRouteName, arguments: e.id),
-                      ),
-                    ))
+                      )
+                    ])))
                 .toList();
           }
 
@@ -124,7 +135,7 @@ class ListArticleWidget extends StatelessWidget {
             mainAxisSpacing: 10,
             shrinkWrap: true,
             maxCrossAxisExtent: 600.0,
-            childAspectRatio: 3,
+            childAspectRatio: 1,
             physics: const NeverScrollableScrollPhysics(),
             children: cards.toList(),
           );
