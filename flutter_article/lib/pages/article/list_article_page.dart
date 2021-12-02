@@ -28,7 +28,7 @@ class ListArticlePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: SizedBox(
-            width: 800,
+            width: 1000,
             child: Column(
               children: [ListArticleWidget(client: client)],
             ),
@@ -43,6 +43,13 @@ class ListArticleWidget extends StatelessWidget {
   final ArticleServiceApi client;
 
   const ListArticleWidget({Key? key, required this.client}) : super(key: key);
+
+  static const kImageUriList = <String>[
+    "http://k8s.minio.hatlonely.com/article/IMG_2684.png",
+    "http://k8s.minio.hatlonely.com/article/IMG_2704.png",
+    "http://k8s.minio.hatlonely.com/article/IMG_2731.png",
+    "http://k8s.minio.hatlonely.com/article/IMG_2732.png",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -61,16 +68,18 @@ class ListArticleWidget extends StatelessWidget {
             return Text('Error: ${snapshot.error}');
           } else if (snapshot.hasData) {
             cards = snapshot.data!.data!.articles!
+                .asMap()
+                .entries
                 .map((e) => Card(
                     elevation: 1,
                     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                     margin: const EdgeInsets.all(0),
                     child: Column(children: [
-                      const SizedBox(
+                      SizedBox(
                         width: double.infinity,
                         height: 200,
                         child: Image(
-                          image: NetworkImage('http://k8s.minio.hatlonely.com/article/IMG_2684.png'),
+                          image: NetworkImage(kImageUriList[e.key % kImageUriList.length]),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -88,7 +97,7 @@ class ListArticleWidget extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       Text(
-                                        e.title!,
+                                        e.value.title!,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
                                           fontSize: 22,
@@ -113,7 +122,7 @@ class ListArticleWidget extends StatelessWidget {
                                           ),
                                           Text(
                                             DateFormat.yMMMd()
-                                                .format(DateTime.fromMillisecondsSinceEpoch(e.createAt! * 1000)),
+                                                .format(DateTime.fromMillisecondsSinceEpoch(e.value.createAt! * 1000)),
                                             style: TextStyle(
                                               fontFamily: GoogleFonts.robotoCondensed().fontFamily,
                                               fontFamilyFallback: [
@@ -126,7 +135,8 @@ class ListArticleWidget extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                onTap: () => Navigator.pushNamed(context, GetArticlePage.kRouteName, arguments: e.id),
+                                onTap: () =>
+                                    Navigator.pushNamed(context, GetArticlePage.kRouteName, arguments: e.value.id),
                               ),
                             ),
                           ],
@@ -139,8 +149,8 @@ class ListArticleWidget extends StatelessWidget {
           return GridView.extent(
             primary: false,
             padding: const EdgeInsets.all(20),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
+            crossAxisSpacing: 15,
+            mainAxisSpacing: 15,
             shrinkWrap: true,
             maxCrossAxisExtent: 600.0,
             childAspectRatio: 1,
