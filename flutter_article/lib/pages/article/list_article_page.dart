@@ -56,9 +56,9 @@ class ListArticleWidget extends StatelessWidget {
     return Card(
       elevation: 0,
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-      margin: const EdgeInsets.fromLTRB(10, 50, 10, 20),
+      margin: const EdgeInsets.fromLTRB(0, 50, 0, 10),
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(0),
         child: FutureBuilder<Response<ApiListArticleRes>>(future: () {
           return client.articleServiceListArticle();
         }(), builder: (BuildContext context, AsyncSnapshot<Response<ApiListArticleRes>> snapshot) {
@@ -75,6 +75,33 @@ class ListArticleWidget extends StatelessWidget {
                     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                     margin: const EdgeInsets.all(0),
                     child: Column(children: [
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: ListTile(
+                          leading: const CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage("http://k8s.minio.hatlonely.com/avatar/hatlonely.png"),
+                          ),
+                          title: Text(
+                            "hatlonely",
+                            style: TextStyle(
+                              fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                              fontFamilyFallback: [
+                                GoogleFonts.zcoolXiaoWei().fontFamily!,
+                              ],
+                            ),
+                          ),
+                          trailing: Text(
+                            DateFormat.yMMMd().format(DateTime.fromMillisecondsSinceEpoch(e.value.createAt! * 1000)),
+                            style: TextStyle(
+                              fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                              fontFamilyFallback: [
+                                GoogleFonts.zcoolXiaoWei().fontFamily!,
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                       SizedBox(
                         width: double.infinity,
                         height: 200,
@@ -107,31 +134,6 @@ class ListArticleWidget extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                                      const Divider(),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Text(
-                                            "hatlonely",
-                                            style: TextStyle(
-                                              fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-                                              fontFamilyFallback: [
-                                                GoogleFonts.zcoolXiaoWei().fontFamily!,
-                                              ],
-                                            ),
-                                          ),
-                                          Text(
-                                            DateFormat.yMMMd()
-                                                .format(DateTime.fromMillisecondsSinceEpoch(e.value.createAt! * 1000)),
-                                            style: TextStyle(
-                                              fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-                                              fontFamilyFallback: [
-                                                GoogleFonts.zcoolXiaoWei().fontFamily!,
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
                                     ],
                                   ),
                                 ),
@@ -141,14 +143,14 @@ class ListArticleWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                      )
+                      ),
                     ])))
                 .toList();
           }
 
           return GridView.extent(
             primary: false,
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(5),
             crossAxisSpacing: 15,
             mainAxisSpacing: 15,
             shrinkWrap: true,
