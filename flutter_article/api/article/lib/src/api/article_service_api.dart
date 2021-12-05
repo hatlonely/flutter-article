@@ -12,6 +12,7 @@ import 'package:articleapi/src/model/api_article.dart';
 import 'package:articleapi/src/model/api_article_id.dart';
 import 'package:articleapi/src/model/api_author.dart';
 import 'package:articleapi/src/model/api_author_id.dart';
+import 'package:articleapi/src/model/api_list_article_meta_res.dart';
 import 'package:articleapi/src/model/api_list_article_res.dart';
 import 'package:articleapi/src/model/inline_object.dart';
 import 'package:articleapi/src/model/rpc_status.dart';
@@ -24,99 +25,6 @@ class ArticleServiceApi {
   final Serializers _serializers;
 
   const ArticleServiceApi(this._dio, this._serializers);
-
-  /// articleServiceAddOrUpdateAuthor
-  /// 
-  ///
-  /// Parameters:
-  /// * [body] 
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [ApiAuthorID] as data
-  /// Throws [DioError] if API call or serialization fails
-  Future<Response<ApiAuthorID>> articleServiceAddOrUpdateAuthor({ 
-    required ApiAuthor body,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/v1/addOrUpdateAuthor';
-    final _options = Options(
-      method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
-      contentType: 'application/json',
-      validateStatus: validateStatus,
-    );
-
-    dynamic _bodyData;
-
-    try {
-      const _type = FullType(ApiAuthor);
-      _bodyData = _serializers.serialize(body, specifiedType: _type);
-
-    } catch(error, stackTrace) {
-      throw DioError(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioErrorType.other,
-        error: error,
-      )..stackTrace = stackTrace;
-    }
-
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    ApiAuthorID _responseData;
-
-    try {
-      const _responseType = FullType(ApiAuthorID);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as ApiAuthorID;
-
-    } catch (error, stackTrace) {
-      throw DioError(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioErrorType.other,
-        error: error,
-      )..stackTrace = stackTrace;
-    }
-
-    return Response<ApiAuthorID>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
 
   /// articleServiceDelArticle
   /// 
@@ -523,6 +431,91 @@ class ArticleServiceApi {
     );
   }
 
+  /// articleServiceListArticleMeta
+  /// 
+  ///
+  /// Parameters:
+  /// * [offset] 
+  /// * [limit] 
+  /// * [authorID] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [ApiListArticleMetaRes] as data
+  /// Throws [DioError] if API call or serialization fails
+  Future<Response<ApiListArticleMetaRes>> articleServiceListArticleMeta({ 
+    int? offset,
+    int? limit,
+    String? authorID,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/listArticleMeta';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      if (offset != null) r'offset': encodeQueryParameter(_serializers, offset, const FullType(int)),
+      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
+      if (authorID != null) r'authorID': encodeQueryParameter(_serializers, authorID, const FullType(String)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ApiListArticleMetaRes _responseData;
+
+    try {
+      const _responseType = FullType(ApiListArticleMetaRes);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ApiListArticleMetaRes;
+
+    } catch (error, stackTrace) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      )..stackTrace = stackTrace;
+    }
+
+    return Response<ApiListArticleMetaRes>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// articleServicePing
   /// 
   ///
@@ -688,7 +681,7 @@ class ArticleServiceApi {
     );
   }
 
-  /// articleServicePutOrUpdateArticle
+  /// articleServicePutAuthor
   /// 
   ///
   /// Parameters:
@@ -700,10 +693,10 @@ class ArticleServiceApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ApiArticleID] as data
+  /// Returns a [Future] containing a [Response] with a [ApiAuthorID] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<ApiArticleID>> articleServicePutOrUpdateArticle({ 
-    required ApiArticle body,
+  Future<Response<ApiAuthorID>> articleServicePutAuthor({ 
+    required ApiAuthor body,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -711,7 +704,7 @@ class ArticleServiceApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/putOrUpdateArticle';
+    final _path = r'/v1/author';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -728,7 +721,7 @@ class ArticleServiceApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ApiArticle);
+      const _type = FullType(ApiAuthor);
       _bodyData = _serializers.serialize(body, specifiedType: _type);
 
     } catch(error, stackTrace) {
@@ -751,14 +744,14 @@ class ArticleServiceApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ApiArticleID _responseData;
+    ApiAuthorID _responseData;
 
     try {
-      const _responseType = FullType(ApiArticleID);
+      const _responseType = FullType(ApiAuthorID);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ApiArticleID;
+      ) as ApiAuthorID;
 
     } catch (error, stackTrace) {
       throw DioError(
@@ -769,7 +762,7 @@ class ArticleServiceApi {
       )..stackTrace = stackTrace;
     }
 
-    return Response<ApiArticleID>(
+    return Response<ApiAuthorID>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

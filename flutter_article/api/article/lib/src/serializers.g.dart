@@ -9,8 +9,10 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ApiArticle.serializer)
       ..add(ApiArticleID.serializer)
+      ..add(ApiArticleMeta.serializer)
       ..add(ApiAuthor.serializer)
       ..add(ApiAuthorID.serializer)
+      ..add(ApiListArticleMetaRes.serializer)
       ..add(ApiListArticleRes.serializer)
       ..add(InlineObject.serializer)
       ..add(ProtobufAny.serializer)
@@ -19,8 +21,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(ApiArticle)]),
           () => new ListBuilder<ApiArticle>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(ApiArticleMeta)]),
+          () => new ListBuilder<ApiArticleMeta>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ProtobufAny)]),
           () => new ListBuilder<ProtobufAny>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

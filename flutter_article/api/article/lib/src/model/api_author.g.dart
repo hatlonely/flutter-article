@@ -13,11 +13,13 @@ class _$ApiAuthor extends ApiAuthor {
   final String? key;
   @override
   final String? name;
+  @override
+  final String? avatar;
 
   factory _$ApiAuthor([void Function(ApiAuthorBuilder)? updates]) =>
       (new ApiAuthorBuilder()..update(updates)).build();
 
-  _$ApiAuthor._({this.id, this.key, this.name}) : super._();
+  _$ApiAuthor._({this.id, this.key, this.name, this.avatar}) : super._();
 
   @override
   ApiAuthor rebuild(void Function(ApiAuthorBuilder) updates) =>
@@ -32,12 +34,14 @@ class _$ApiAuthor extends ApiAuthor {
     return other is ApiAuthor &&
         id == other.id &&
         key == other.key &&
-        name == other.name;
+        name == other.name &&
+        avatar == other.avatar;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, id.hashCode), key.hashCode), name.hashCode));
+    return $jf($jc($jc($jc($jc(0, id.hashCode), key.hashCode), name.hashCode),
+        avatar.hashCode));
   }
 
   @override
@@ -45,7 +49,8 @@ class _$ApiAuthor extends ApiAuthor {
     return (newBuiltValueToStringHelper('ApiAuthor')
           ..add('id', id)
           ..add('key', key)
-          ..add('name', name))
+          ..add('name', name)
+          ..add('avatar', avatar))
         .toString();
   }
 }
@@ -65,6 +70,10 @@ class ApiAuthorBuilder implements Builder<ApiAuthor, ApiAuthorBuilder> {
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  String? _avatar;
+  String? get avatar => _$this._avatar;
+  set avatar(String? avatar) => _$this._avatar = avatar;
+
   ApiAuthorBuilder() {
     ApiAuthor._defaults(this);
   }
@@ -75,6 +84,7 @@ class ApiAuthorBuilder implements Builder<ApiAuthor, ApiAuthorBuilder> {
       _id = $v.id;
       _key = $v.key;
       _name = $v.name;
+      _avatar = $v.avatar;
       _$v = null;
     }
     return this;
@@ -93,7 +103,8 @@ class ApiAuthorBuilder implements Builder<ApiAuthor, ApiAuthorBuilder> {
 
   @override
   _$ApiAuthor build() {
-    final _$result = _$v ?? new _$ApiAuthor._(id: id, key: key, name: name);
+    final _$result =
+        _$v ?? new _$ApiAuthor._(id: id, key: key, name: name, avatar: avatar);
     replace(_$result);
     return _$result;
   }

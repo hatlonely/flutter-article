@@ -13,8 +13,10 @@ export 'package:articleapi/src/api/article_service_api.dart';
 
 export 'package:articleapi/src/model/api_article.dart';
 export 'package:articleapi/src/model/api_article_id.dart';
+export 'package:articleapi/src/model/api_article_meta.dart';
 export 'package:articleapi/src/model/api_author.dart';
 export 'package:articleapi/src/model/api_author_id.dart';
+export 'package:articleapi/src/model/api_list_article_meta_res.dart';
 export 'package:articleapi/src/model/api_list_article_res.dart';
 export 'package:articleapi/src/model/inline_object.dart';
 export 'package:articleapi/src/model/protobuf_any.dart';

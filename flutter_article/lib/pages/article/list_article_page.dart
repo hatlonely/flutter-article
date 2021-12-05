@@ -59,15 +59,15 @@ class ListArticleWidget extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(0, 50, 0, 10),
       child: Padding(
         padding: const EdgeInsets.all(0),
-        child: FutureBuilder<Response<ApiListArticleRes>>(future: () {
-          return client.articleServiceListArticle();
-        }(), builder: (BuildContext context, AsyncSnapshot<Response<ApiListArticleRes>> snapshot) {
+        child: FutureBuilder<Response<ApiListArticleMetaRes>>(future: () {
+          return client.articleServiceListArticleMeta();
+        }(), builder: (BuildContext context, AsyncSnapshot<Response<ApiListArticleMetaRes>> snapshot) {
           var cards = <Widget>[];
 
           if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else if (snapshot.hasData) {
-            cards = snapshot.data!.data!.articles!
+            cards = snapshot.data!.data!.articleMetas!
                 .asMap()
                 .entries
                 .map((e) => Card(
@@ -78,12 +78,12 @@ class ListArticleWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(5),
                         child: ListTile(
-                          leading: const CircleAvatar(
+                          leading: CircleAvatar(
                             radius: 15,
-                            backgroundImage: NetworkImage("http://k8s.minio.hatlonely.com/avatar/hatlonely.png"),
+                            backgroundImage: NetworkImage(e.value.authorAvatar!),
                           ),
                           title: Text(
-                            "hatlonely",
+                            e.value.authorName!,
                             style: TextStyle(
                               fontFamily: GoogleFonts.robotoCondensed().fontFamily,
                               fontFamilyFallback: [

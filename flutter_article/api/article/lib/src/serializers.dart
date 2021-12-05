@@ -14,8 +14,10 @@ import 'package:articleapi/src/model/date.dart';
 
 import 'package:articleapi/src/model/api_article.dart';
 import 'package:articleapi/src/model/api_article_id.dart';
+import 'package:articleapi/src/model/api_article_meta.dart';
 import 'package:articleapi/src/model/api_author.dart';
 import 'package:articleapi/src/model/api_author_id.dart';
+import 'package:articleapi/src/model/api_list_article_meta_res.dart';
 import 'package:articleapi/src/model/api_list_article_res.dart';
 import 'package:articleapi/src/model/inline_object.dart';
 import 'package:articleapi/src/model/protobuf_any.dart';
@@ -26,8 +28,10 @@ part 'serializers.g.dart';
 @SerializersFor([
   ApiArticle,
   ApiArticleID,
+  ApiArticleMeta,
   ApiAuthor,
   ApiAuthorID,
+  ApiListArticleMetaRes,
   ApiListArticleRes,
   InlineObject,
   ProtobufAny,

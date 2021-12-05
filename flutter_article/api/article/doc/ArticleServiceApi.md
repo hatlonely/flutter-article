@@ -9,58 +9,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**articleServiceAddOrUpdateAuthor**](ArticleServiceApi.md#articleserviceaddorupdateauthor) | **POST** /v1/addOrUpdateAuthor | 
 [**articleServiceDelArticle**](ArticleServiceApi.md#articleservicedelarticle) | **DELETE** /v1/article/{id} | 
 [**articleServiceDelAuthor**](ArticleServiceApi.md#articleservicedelauthor) | **DELETE** /v1/author | 
 [**articleServiceDelAuthorByKey**](ArticleServiceApi.md#articleservicedelauthorbykey) | **POST** /v1/delAuthorByKey | 
 [**articleServiceGetArticle**](ArticleServiceApi.md#articleservicegetarticle) | **GET** /v1/article/{id} | 
 [**articleServiceListArticle**](ArticleServiceApi.md#articleservicelistarticle) | **GET** /v1/articles | 
+[**articleServiceListArticleMeta**](ArticleServiceApi.md#articleservicelistarticlemeta) | **GET** /v1/listArticleMeta | 
 [**articleServicePing**](ArticleServiceApi.md#articleserviceping) | **GET** /ping | 
 [**articleServicePutArticle**](ArticleServiceApi.md#articleserviceputarticle) | **POST** /v1/article | 
-[**articleServicePutOrUpdateArticle**](ArticleServiceApi.md#articleserviceputorupdatearticle) | **POST** /v1/putOrUpdateArticle | 
+[**articleServicePutAuthor**](ArticleServiceApi.md#articleserviceputauthor) | **POST** /v1/author | 
 [**articleServiceUpdateArticle**](ArticleServiceApi.md#articleserviceupdatearticle) | **PUT** /v1/article/{id} | 
 
-
-# **articleServiceAddOrUpdateAuthor**
-> ApiAuthorID articleServiceAddOrUpdateAuthor(body)
-
-
-
-### Example 
-```dart
-import 'package:articleapi/api.dart';
-
-final api = Articleapi().getArticleServiceApi();
-final ApiAuthor body = ; // ApiAuthor | 
-
-try { 
-    final response = api.articleServiceAddOrUpdateAuthor(body);
-    print(response);
-} catch on DioError (e) {
-    print('Exception when calling ArticleServiceApi->articleServiceAddOrUpdateAuthor: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**ApiAuthor**](ApiAuthor.md)|  | 
-
-### Return type
-
-[**ApiAuthorID**](ApiAuthorID.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **articleServiceDelArticle**
 > JsonObject articleServiceDelArticle(id)
@@ -271,6 +230,51 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **articleServiceListArticleMeta**
+> ApiListArticleMetaRes articleServiceListArticleMeta(offset, limit, authorID)
+
+
+
+### Example 
+```dart
+import 'package:articleapi/api.dart';
+
+final api = Articleapi().getArticleServiceApi();
+final int offset = 56; // int | 
+final int limit = 56; // int | 
+final String authorID = authorID_example; // String | 
+
+try { 
+    final response = api.articleServiceListArticleMeta(offset, limit, authorID);
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling ArticleServiceApi->articleServiceListArticleMeta: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **offset** | **int**|  | [optional] 
+ **limit** | **int**|  | [optional] 
+ **authorID** | **String**|  | [optional] 
+
+### Return type
+
+[**ApiListArticleMetaRes**](ApiListArticleMetaRes.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **articleServicePing**
 > JsonObject articleServicePing()
 
@@ -349,8 +353,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **articleServicePutOrUpdateArticle**
-> ApiArticleID articleServicePutOrUpdateArticle(body)
+# **articleServicePutAuthor**
+> ApiAuthorID articleServicePutAuthor(body)
 
 
 
@@ -359,13 +363,13 @@ No authorization required
 import 'package:articleapi/api.dart';
 
 final api = Articleapi().getArticleServiceApi();
-final ApiArticle body = ; // ApiArticle | 
+final ApiAuthor body = ; // ApiAuthor | 
 
 try { 
-    final response = api.articleServicePutOrUpdateArticle(body);
+    final response = api.articleServicePutAuthor(body);
     print(response);
 } catch on DioError (e) {
-    print('Exception when calling ArticleServiceApi->articleServicePutOrUpdateArticle: $e\n');
+    print('Exception when calling ArticleServiceApi->articleServicePutAuthor: $e\n');
 }
 ```
 
@@ -373,11 +377,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**ApiArticle**](ApiArticle.md)|  | 
+ **body** | [**ApiAuthor**](ApiAuthor.md)|  | 
 
 ### Return type
 
-[**ApiArticleID**](ApiArticleID.md)
+[**ApiAuthorID**](ApiAuthorID.md)
 
 ### Authorization
 

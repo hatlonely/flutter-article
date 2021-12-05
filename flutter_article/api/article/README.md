@@ -47,13 +47,13 @@ import 'package:articleapi/articleapi.dart';
 
 
 final api = Articleapi().getArticleServiceApi();
-final ApiAuthor body = ; // ApiAuthor | 
+final String id = id_example; // String | 
 
 try {
-    final response = await api.articleServiceAddOrUpdateAuthor(body);
+    final response = await api.articleServiceDelArticle(id);
     print(response);
 } catch on DioError (e) {
-    print("Exception when calling ArticleServiceApi->articleServiceAddOrUpdateAuthor: $e\n");
+    print("Exception when calling ArticleServiceApi->articleServiceDelArticle: $e\n");
 }
 
 ```
@@ -64,15 +64,15 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-[*ArticleServiceApi*](doc/ArticleServiceApi.md) | [**articleServiceAddOrUpdateAuthor**](doc/ArticleServiceApi.md#articleserviceaddorupdateauthor) | **POST** /v1/addOrUpdateAuthor | 
 [*ArticleServiceApi*](doc/ArticleServiceApi.md) | [**articleServiceDelArticle**](doc/ArticleServiceApi.md#articleservicedelarticle) | **DELETE** /v1/article/{id} | 
 [*ArticleServiceApi*](doc/ArticleServiceApi.md) | [**articleServiceDelAuthor**](doc/ArticleServiceApi.md#articleservicedelauthor) | **DELETE** /v1/author | 
 [*ArticleServiceApi*](doc/ArticleServiceApi.md) | [**articleServiceDelAuthorByKey**](doc/ArticleServiceApi.md#articleservicedelauthorbykey) | **POST** /v1/delAuthorByKey | 
 [*ArticleServiceApi*](doc/ArticleServiceApi.md) | [**articleServiceGetArticle**](doc/ArticleServiceApi.md#articleservicegetarticle) | **GET** /v1/article/{id} | 
 [*ArticleServiceApi*](doc/ArticleServiceApi.md) | [**articleServiceListArticle**](doc/ArticleServiceApi.md#articleservicelistarticle) | **GET** /v1/articles | 
+[*ArticleServiceApi*](doc/ArticleServiceApi.md) | [**articleServiceListArticleMeta**](doc/ArticleServiceApi.md#articleservicelistarticlemeta) | **GET** /v1/listArticleMeta | 
 [*ArticleServiceApi*](doc/ArticleServiceApi.md) | [**articleServicePing**](doc/ArticleServiceApi.md#articleserviceping) | **GET** /ping | 
 [*ArticleServiceApi*](doc/ArticleServiceApi.md) | [**articleServicePutArticle**](doc/ArticleServiceApi.md#articleserviceputarticle) | **POST** /v1/article | 
-[*ArticleServiceApi*](doc/ArticleServiceApi.md) | [**articleServicePutOrUpdateArticle**](doc/ArticleServiceApi.md#articleserviceputorupdatearticle) | **POST** /v1/putOrUpdateArticle | 
+[*ArticleServiceApi*](doc/ArticleServiceApi.md) | [**articleServicePutAuthor**](doc/ArticleServiceApi.md#articleserviceputauthor) | **POST** /v1/author | 
 [*ArticleServiceApi*](doc/ArticleServiceApi.md) | [**articleServiceUpdateArticle**](doc/ArticleServiceApi.md#articleserviceupdatearticle) | **PUT** /v1/article/{id} | 
 
 
@@ -80,8 +80,10 @@ Class | Method | HTTP request | Description
 
  - [ApiArticle](doc/ApiArticle.md)
  - [ApiArticleID](doc/ApiArticleID.md)
+ - [ApiArticleMeta](doc/ApiArticleMeta.md)
  - [ApiAuthor](doc/ApiAuthor.md)
  - [ApiAuthorID](doc/ApiAuthorID.md)
+ - [ApiListArticleMetaRes](doc/ApiListArticleMetaRes.md)
  - [ApiListArticleRes](doc/ApiListArticleRes.md)
  - [InlineObject](doc/InlineObject.md)
  - [ProtobufAny](doc/ProtobufAny.md)

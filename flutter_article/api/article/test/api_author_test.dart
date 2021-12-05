@@ -22,5 +22,10 @@ void main() {
       // TODO
     });
 
+    // String avatar
+    test('to test the property `avatar`', () async {
+      // TODO
+    });
+
   });
 }

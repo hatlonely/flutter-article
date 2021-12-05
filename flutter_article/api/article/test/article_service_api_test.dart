@@ -7,11 +7,6 @@ void main() {
   final instance = Articleapi().getArticleServiceApi();
 
   group(ArticleServiceApi, () {
-    //Future<ApiAuthorID> articleServiceAddOrUpdateAuthor(ApiAuthor body) async
-    test('test articleServiceAddOrUpdateAuthor', () async {
-      // TODO
-    });
-
     //Future<JsonObject> articleServiceDelArticle(String id) async
     test('test articleServiceDelArticle', () async {
       // TODO
@@ -37,6 +32,11 @@ void main() {
       // TODO
     });
 
+    //Future<ApiListArticleMetaRes> articleServiceListArticleMeta({ int offset, int limit, String authorID }) async
+    test('test articleServiceListArticleMeta', () async {
+      // TODO
+    });
+
     //Future<JsonObject> articleServicePing() async
     test('test articleServicePing', () async {
       // TODO
@@ -47,8 +47,8 @@ void main() {
       // TODO
     });
 
-    //Future<ApiArticleID> articleServicePutOrUpdateArticle(ApiArticle body) async
-    test('test articleServicePutOrUpdateArticle', () async {
+    //Future<ApiAuthorID> articleServicePutAuthor(ApiAuthor body) async
+    test('test articleServicePutAuthor', () async {
       // TODO
     });
 

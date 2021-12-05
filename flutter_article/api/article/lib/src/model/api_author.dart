@@ -13,6 +13,7 @@ part 'api_author.g.dart';
 /// * [id] 
 /// * [key] 
 /// * [name] 
+/// * [avatar] 
 abstract class ApiAuthor implements Built<ApiAuthor, ApiAuthorBuilder> {
     @BuiltValueField(wireName: r'id')
     String? get id;
@@ -22,6 +23,9 @@ abstract class ApiAuthor implements Built<ApiAuthor, ApiAuthorBuilder> {
 
     @BuiltValueField(wireName: r'name')
     String? get name;
+
+    @BuiltValueField(wireName: r'avatar')
+    String? get avatar;
 
     ApiAuthor._();
 
@@ -63,6 +67,12 @@ class _$ApiAuthorSerializer implements StructuredSerializer<ApiAuthor> {
                 ..add(serializers.serialize(object.name,
                     specifiedType: const FullType(String)));
         }
+        if (object.avatar != null) {
+            result
+                ..add(r'avatar')
+                ..add(serializers.serialize(object.avatar,
+                    specifiedType: const FullType(String)));
+        }
         return result;
     }
 
@@ -87,6 +97,10 @@ class _$ApiAuthorSerializer implements StructuredSerializer<ApiAuthor> {
                     break;
                 case r'name':
                     result.name = serializers.deserialize(value,
+                        specifiedType: const FullType(String)) as String;
+                    break;
+                case r'avatar':
+                    result.avatar = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
             }
