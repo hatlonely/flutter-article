@@ -11,6 +11,7 @@ ingress:
   enable: true
   host: "${INGRESS_HOST}"
   secretName: "${SECRET_NAME}"
+  clusterIssuer: "${CLUSTER_ISSUER_NAME}"
 
 config:
   default.conf: |

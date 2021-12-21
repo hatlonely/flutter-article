@@ -22,6 +22,7 @@ env:
     REPLICA_COUNT: 2
     INGRESS_HOST: "k8s.article.hatlonely.com"
     SECRET_NAME: "flutter-article-tls"
+    CLUSTER_ISSUER_NAME: "letsencrypt-http01"
 
 task:
   api:
