@@ -45,10 +45,10 @@ class ListArticleWidget extends StatelessWidget {
   const ListArticleWidget({Key? key, required this.client}) : super(key: key);
 
   static const kImageUriList = <String>[
-    "http://k8s.minio.hatlonely.com/article/IMG_2684.png",
-    "http://k8s.minio.hatlonely.com/article/IMG_2704.png",
-    "http://k8s.minio.hatlonely.com/article/IMG_2731.png",
-    "http://k8s.minio.hatlonely.com/article/IMG_2732.png",
+    "https://k8s.minio.hatlonely.com/article/IMG_2684.png",
+    "https://k8s.minio.hatlonely.com/article/IMG_2704.png",
+    "https://k8s.minio.hatlonely.com/article/IMG_2731.png",
+    "https://k8s.minio.hatlonely.com/article/IMG_2732.png",
   ];
 
   @override

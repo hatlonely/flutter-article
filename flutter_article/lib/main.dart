@@ -10,7 +10,7 @@ void main() {
 
 class ArticleApp extends StatelessWidget {
   final client = Articleapi(
-    basePathOverride: 'http://k8s.rpc.article.hatlonely.com',
+    basePathOverride: 'https://k8s.rpc.article.hatlonely.com',
   ).getArticleServiceApi();
 
   ArticleApp({Key? key}) : super(key: key);
