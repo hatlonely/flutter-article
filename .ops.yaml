@@ -21,7 +21,7 @@ env:
     PULL_SECRET_NAME: "hatlonely-pull-secret"
     REPLICA_COUNT: 2
     INGRESS_HOST: "k8s.article.hatlonely.com"
-    SECRET_NAME: "k8s-secret"
+    SECRET_NAME: "flutter-article-tls"
 
 task:
   api:
