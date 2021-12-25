@@ -23,6 +23,10 @@ env:
     INGRESS_HOST: "k8s.article.hatlonely.com"
     SECRET_NAME: "flutter-article-tls"
     CLUSTER_ISSUER_NAME: "letsencrypt-http01"
+    MINIO_NAME: "home"
+    MINIO_ENDPOINT: "https://k8s.minio.hatlonely.com"
+    MINIO_USERNAME: "{{.minio.username}}"
+    MINIO_PASSWORD: "{{.minio.password}}"
 
 task:
   api:
@@ -78,3 +82,15 @@ task:
           "upgrade") helm upgrade "${NAME}" -n "${NAMESPACE}" "${TMP}/helm/${NAME}" -f "${TMP}/helm/values-adapter.yaml";;
           "delete") helm delete "${NAME}" -n "${NAMESPACE}";;
         esac
+  put-static:
+    step:
+      - mkdir -p ${TMP}/put-static/npm/canvaskit-wasm@0.28.1/bin/
+      - mc alias set "${MINIO_NAME}" "${MINIO_ENDPOINT}" "${MINIO_USERNAME}" "${MINIO_PASSWORD}" --api S3v4
+      - |
+        mc ls ${MINIO_NAME}/npm || {
+          mc mb ${MINIO_NAME}/npm
+          mc policy set public ${MINIO_NAME}/npm
+        }
+      - wget https://cdn.jsdelivr.net/npm/canvaskit-wasm@0.28.1/bin/canvaskit.js -O ${TMP}/put-static/npm/canvaskit-wasm@0.28.1/bin/canvaskit.js
+      - wget https://cdn.jsdelivr.net/npm/canvaskit-wasm@0.28.1/bin/canvaskit.wasm -O ${TMP}/put-static/npm/canvaskit-wasm@0.28.1/bin/canvaskit.wasm
+      - mc cp --recursive ${TMP}/put-static/npm/ ${MINIO_NAME}/npm/
