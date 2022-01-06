@@ -56,6 +56,21 @@ task:
   font:
     step:
       - wget https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansSC.zip
+  google-fonts:
+    step:
+      - mkdir -p ${TMP}/google-fonts && mkdir -p flutter_article/google-fonts
+      - wget https://fonts.google.com/download?family=Roboto -O ${TMP}/google-fonts/Roboto.zip
+      - unzip -o ${TMP}/google-fonts/Roboto.zip -d flutter_article/google-fonts && rm -rf flutter_article/google-fonts/LICENSE.txt
+      - wget https://fonts.google.com/download?family=Roboto%20Condensed -O ${TMP}/google-fonts/RobotoCondensed.zip
+      - unzip -o ${TMP}/google-fonts/RobotoCondensed.zip -d flutter_article/google-fonts && rm -rf flutter_article/google-fonts/LICENSE.txt
+      - wget https://fonts.google.com/download?family=Source%20Code%20Pro -O ${TMP}/google-fonts/SourceCodePro.zip
+      - unzip -o ${TMP}/google-fonts/SourceCodePro.zip -d flutter_article/google-fonts && rm -rf flutter_article/google-fonts/README.txt
+      - wget https://fonts.google.com/download?family=Noto%20Sans%20SC -O ${TMP}/google-fonts/NotoSansSC.zip
+      - unzip -o ${TMP}/google-fonts/NotoSansSC.zip -d flutter_article/google-fonts && rm -rf flutter_article/google-fonts/OFL.txt
+      - wget https://fonts.google.com/download?family=Noto%20Serif%20SC -O ${TMP}/google-fonts/NotoSerifSC.zip
+      - unzip -o ${TMP}/google-fonts/NotoSerifSC.zip -d flutter_article/google-fonts && rm -rf flutter_article/google-fonts/OFL.txt
+      - wget https://fonts.google.com/download?family=ZCOOL%20XiaoWei -O ${TMP}/google-fonts/ZCOOLXiaoWei.zip
+      - unzip -o ${TMP}/google-fonts/ZCOOLXiaoWei.zip -d flutter_article/google-fonts && rm -rf flutter_article/google-fonts/OFL.txt
   imageSync:
     step:
       - sh ${DEP}/ops/tool/image.sh sync "docker.io" "cirrusci" "" "" "${REGISTRY_ENDPOINT}" "${REGISTRY_NAMESPACE}" "${REGISTRY_USERNAME}" "${REGISTRY_PASSWORD}" "flutter" 2.5.3
