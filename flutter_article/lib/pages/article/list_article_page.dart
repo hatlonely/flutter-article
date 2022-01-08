@@ -77,10 +77,12 @@ class ListArticleWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(5),
                         child: ListTile(
+                          // 头像
                           leading: CircleAvatar(
                             radius: 15,
                             backgroundImage: NetworkImage(e.value.authorAvatar!),
                           ),
+                          // 作者
                           title: Text(
                             e.value.authorName!,
                             style: const TextStyle(
@@ -90,6 +92,7 @@ class ListArticleWidget extends StatelessWidget {
                               ],
                             ),
                           ),
+                          // 时间
                           trailing: Text(
                             DateFormat.yMMMd().format(DateTime.fromMillisecondsSinceEpoch(e.value.createAt! * 1000)),
                             style: const TextStyle(
@@ -104,6 +107,7 @@ class ListArticleWidget extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         height: 200,
+                        // 插图
                         child: Image(
                           image: NetworkImage(kImageUriList[e.key % kImageUriList.length]),
                           fit: BoxFit.cover,
@@ -122,6 +126,7 @@ class ListArticleWidget extends StatelessWidget {
                                   padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                                   child: Column(
                                     children: [
+                                      // 标题
                                       Text(
                                         e.value.title!,
                                         overflow: TextOverflow.ellipsis,
@@ -154,7 +159,6 @@ class ListArticleWidget extends StatelessWidget {
             mainAxisSpacing: 15,
             shrinkWrap: true,
             maxCrossAxisExtent: 600.0,
-            childAspectRatio: 1,
             physics: const NeverScrollableScrollPhysics(),
             children: cards.toList(),
           );
