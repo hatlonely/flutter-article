@@ -2,7 +2,6 @@ import 'package:articleapi/articleapi.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class GetArticlePage extends StatelessWidget {
   static const kRouteName = '/article/get';
@@ -23,7 +22,7 @@ class GetArticlePage extends StatelessWidget {
             color: Colors.white,
             fontFamily: 'Roboto Condensed',
             fontFamilyFallback: [
-              'ZCOOL XiaoWei',
+              'Source Han Sans SC',
             ],
           ),
         ),
@@ -72,32 +71,32 @@ class GetArticleWidget extends StatelessWidget {
           // styleSheetTheme: MarkdownStyleSheetBaseTheme.platform,
           styleSheet: MarkdownStyleSheet(
             a: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
-              'ZCOOL XiaoWei',
+              'Source Han Sans SC',
             ]),
             h1: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
-              'ZCOOL XiaoWei',
+              'Source Han Sans SC',
             ]),
             h2: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
-              'ZCOOL XiaoWei',
+              'Source Han Sans SC',
             ]),
             h3: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
-              'ZCOOL XiaoWei',
+              'Source Han Sans SC',
             ]),
             h4: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
-              'ZCOOL XiaoWei',
+              'Source Han Sans SC',
             ]),
             h5: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
-              'ZCOOL XiaoWei',
+              'Source Han Sans SC',
             ]),
             h6: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
-              'ZCOOL XiaoWei',
+              'Source Han Sans SC',
             ]),
-            p: TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
-              GoogleFonts.notoSerif().fontFamily!,
+            p: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
+              'Source Han Sans SC',
             ]),
-            code: TextStyle(
-              fontFamily: GoogleFonts.sourceCodePro().fontFamily,
-            ),
+            code: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
+              'Source Code Pro',
+            ]),
           ),
         );
       }
@@ -106,7 +105,7 @@ class GetArticleWidget extends StatelessWidget {
         style: TextStyle(
           fontFamily: 'Roboto Condensed',
           fontFamilyFallback: [
-            'ZCOOL XiaoWei',
+            'Source Han Sans SC',
           ],
         ),
       );

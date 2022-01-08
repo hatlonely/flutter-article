@@ -2,7 +2,6 @@ import 'package:articleapi/articleapi.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_article/pages/article/get_article_page.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class ListArticlePage extends StatelessWidget {
@@ -14,13 +13,13 @@ class ListArticlePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           '文章列表',
           style: TextStyle(
             color: Colors.white,
-            fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+            fontFamily: 'Roboto Condensed',
             fontFamilyFallback: [
-              GoogleFonts.zcoolXiaoWei().fontFamily!,
+              'Source Han Sans SC',
             ],
           ),
         ),
@@ -84,19 +83,19 @@ class ListArticleWidget extends StatelessWidget {
                           ),
                           title: Text(
                             e.value.authorName!,
-                            style: TextStyle(
-                              fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                            style: const TextStyle(
+                              fontFamily: 'Roboto Condensed',
                               fontFamilyFallback: [
-                                GoogleFonts.zcoolXiaoWei().fontFamily!,
+                                'Source Han Sans SC',
                               ],
                             ),
                           ),
                           trailing: Text(
                             DateFormat.yMMMd().format(DateTime.fromMillisecondsSinceEpoch(e.value.createAt! * 1000)),
-                            style: TextStyle(
-                              fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                            style: const TextStyle(
+                              fontFamily: 'Roboto Condensed',
                               fontFamilyFallback: [
-                                GoogleFonts.zcoolXiaoWei().fontFamily!,
+                                'Source Han Sans SC',
                               ],
                             ),
                           ),
@@ -126,11 +125,11 @@ class ListArticleWidget extends StatelessWidget {
                                       Text(
                                         e.value.title!,
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 22,
-                                          fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+                                          fontFamily: 'Roboto Condensed',
                                           fontFamilyFallback: [
-                                            GoogleFonts.zcoolXiaoWei().fontFamily!,
+                                            'Source Han Sans SC',
                                           ],
                                         ),
                                       ),

@@ -23,9 +23,6 @@ class ArticleApp extends StatelessWidget {
       theme: FlexColorScheme.light(
         scheme: FlexScheme.greyLaw,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        // fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-        // fontFamily: GoogleFonts.longCang().fontFamily,
-        // fontFamily: 'SourceHanSansSC',
         fontFamily: 'Source Han Sans SC',
         transparentStatusBar: true,
         appBarElevation: 5,
