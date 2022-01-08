@@ -95,7 +95,7 @@ class GetArticleWidget extends StatelessWidget {
               'Source Han Sans SC',
             ]),
             code: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
-              'Source Code Pro',
+              'Cousine',
             ]),
           ),
         );
