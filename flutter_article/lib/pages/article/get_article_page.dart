@@ -16,18 +16,18 @@ class GetArticlePage extends StatelessWidget {
     final articleID = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          '文章详情',
-          style: TextStyle(
-            color: Colors.white,
-            fontFamily: 'Roboto Condensed',
-            fontFamilyFallback: [
-              'Source Han Sans SC',
-            ],
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   title: const Text(
+      //     '文章详情',
+      //     style: TextStyle(
+      //       color: Colors.white,
+      //       fontFamily: 'Roboto Condensed',
+      //       fontFamilyFallback: [
+      //         'Source Han Sans SC',
+      //       ],
+      //     ),
+      //   ),
+      // ),
       body: SingleChildScrollView(
         child: Center(
           child: SizedBox(
