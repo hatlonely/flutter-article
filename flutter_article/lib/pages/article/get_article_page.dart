@@ -97,8 +97,8 @@ class GetArticleWidget extends StatelessWidget {
             p: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
               'Source Han Sans SC',
             ]),
-            code: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
-              'Cousine',
+            code: const TextStyle(fontFamily: 'Cousine', fontFamilyFallback: [
+              'Source Han Sans SC',
             ]),
           ),
         );
