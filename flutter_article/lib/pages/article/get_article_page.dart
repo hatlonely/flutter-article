@@ -2,6 +2,7 @@ import 'package:articleapi/articleapi.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class GetArticlePage extends StatelessWidget {
   static const kRouteName = '/article/get';
@@ -68,7 +69,9 @@ class GetArticleWidget extends StatelessWidget {
         return MarkdownBody(
           selectable: true,
           data: snapshot.data!.data!.content!,
-          // styleSheetTheme: MarkdownStyleSheetBaseTheme.platform,
+          onTapLink: (String text, String? href, String title) async {
+            if (!await launch(href!)) throw 'Could not launch $href';
+          },
           styleSheet: MarkdownStyleSheet(
             a: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
               'Source Han Sans SC',
