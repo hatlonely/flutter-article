@@ -42,6 +42,7 @@ dependencies:
   articleapi:
     path: api/article
   intl: ^0.17.0
+  markdown_widget: ^1.2.7
 
 dev_dependencies:
   flutter_test:
