@@ -26,6 +26,7 @@ class ArticleApp extends StatelessWidget {
         // fontFamily: GoogleFonts.robotoCondensed().fontFamily,
         // fontFamily: GoogleFonts.longCang().fontFamily,
         // fontFamily: 'SourceHanSansSC',
+        fontFamily: 'Source Han Sans SC',
         transparentStatusBar: true,
         appBarElevation: 5,
       ).toTheme,

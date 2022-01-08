@@ -17,13 +17,13 @@ class GetArticlePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           '文章详情',
           style: TextStyle(
             color: Colors.white,
-            fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+            fontFamily: 'Roboto Condensed',
             fontFamilyFallback: [
-              GoogleFonts.zcoolXiaoWei().fontFamily!,
+              'ZCOOL XiaoWei',
             ],
           ),
         ),
@@ -71,28 +71,28 @@ class GetArticleWidget extends StatelessWidget {
           data: snapshot.data!.data!.content!,
           // styleSheetTheme: MarkdownStyleSheetBaseTheme.platform,
           styleSheet: MarkdownStyleSheet(
-            a: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
-              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            a: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
+              'ZCOOL XiaoWei',
             ]),
-            h1: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
-              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            h1: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
+              'ZCOOL XiaoWei',
             ]),
-            h2: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
-              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            h2: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
+              'ZCOOL XiaoWei',
             ]),
-            h3: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
-              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            h3: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
+              'ZCOOL XiaoWei',
             ]),
-            h4: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
-              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            h4: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
+              'ZCOOL XiaoWei',
             ]),
-            h5: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
-              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            h5: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
+              'ZCOOL XiaoWei',
             ]),
-            h6: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
-              GoogleFonts.zcoolXiaoWei().fontFamily!,
+            h6: const TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
+              'ZCOOL XiaoWei',
             ]),
-            p: TextStyle(fontFamily: GoogleFonts.robotoCondensed().fontFamily, fontFamilyFallback: [
+            p: TextStyle(fontFamily: 'Roboto Condensed', fontFamilyFallback: [
               GoogleFonts.notoSerif().fontFamily!,
             ]),
             code: TextStyle(
@@ -101,12 +101,12 @@ class GetArticleWidget extends StatelessWidget {
           ),
         );
       }
-      return Text(
+      return const Text(
         "光速加载中...",
         style: TextStyle(
-          fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+          fontFamily: 'Roboto Condensed',
           fontFamilyFallback: [
-            GoogleFonts.zcoolXiaoWei().fontFamily!,
+            'ZCOOL XiaoWei',
           ],
         ),
       );
