@@ -70,6 +70,8 @@ task:
       - unzip -o ${TMP}/assets/fonts/ZCOOLXiaoWei.zip -d flutter_article/assets/fonts/ZCOOLXiaoWei
       - wget https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansSC.zip -O ${TMP}/assets/fonts/SourceHanSansSC.zip
       - unzip -o ${TMP}/assets/fonts/SourceHanSansSC.zip -d flutter_article/assets/fonts/SourceHanSansSC
+      - wget https://fonts.google.com/download?family=Cousine -O ${TMP}/assets/fonts/Cousine.zip
+      - unzip -o ${TMP}/assets/fonts/Cousine.zip -d flutter_article/assets/fonts/Cousine
   imageSync:
     step:
       - sh ${DEP}/ops/tool/image.sh sync "docker.io" "cirrusci" "" "" "${REGISTRY_ENDPOINT}" "${REGISTRY_NAMESPACE}" "${REGISTRY_USERNAME}" "${REGISTRY_PASSWORD}" "flutter" 2.5.3

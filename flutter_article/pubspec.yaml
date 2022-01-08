@@ -232,4 +232,16 @@ flutter:
           weight: 700
         - asset: assets/fonts/SourceHanSansSC/OTF/SimplifiedChinese/SourceHanSansSC-Heavy.otf
           weight: 900
+    - family: Cousine
+      fonts:
+        - asset: assets/fonts/Cousine/Cousine-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Cousine/Cousine-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Cousine/Cousine-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Cousine/Cousine-BoldItalic.ttf
+          weight: 700
+          style: italic
 
